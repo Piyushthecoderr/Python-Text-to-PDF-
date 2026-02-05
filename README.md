@@ -15,7 +15,7 @@ The script accepts both absolute and relative file paths, reads the content of t
 - OS module(for path handling and validation)  
 - File Handling(read/write operations)  
 
-## 📌 How It Works
+## How It Works
 1. User provides the path of a `.txt` file.
 2. The script checks:
    - Whether the path exists  
