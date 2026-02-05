@@ -1,0 +1,30 @@
+from reportlab.platypus import*;
+from reportlab.lib.styles import*;
+import sys
+import os
+paths=os.path.abspath(input("Enter path:"))
+if(os.path.exists(paths) and paths.endswith(".txt")):
+    styles = getSampleStyleSheet()
+    path_Name,_=os.path.splitext(paths)
+    report = SimpleDocTemplate(path_Name+".pdf")
+    report_title=Paragraph("My Beginner Project",styles["Heading1"])
+    element=[]
+    element.append(report_title)
+    element.append(Spacer(1,12))
+    para=""
+    with open(paths,"r",encoding="utf-8")as f:
+        for line in f:
+            if(line.strip()==""):#check for end of paragraph.Last line of a paragraph has \n at last,remove it and check if line is empty.
+                if para.strip()!="":#Sometimes we may have multiple blank lines/paragraph variable may be empty.
+                    element.append(Paragraph(para,styles["Normal"]))
+                    para=""
+            else:
+                para+=line+" "
+        if para.strip() != "":
+            element.append(Paragraph(para, styles["Normal"]))
+    def add_page_number(canvas, doc):
+        canvas.drawString(500, 20, str(doc.page))
+    report.build(element, onLaterPages=add_page_number, onFirstPage=add_page_number)
+    print("PDF generated successfully at location:",path_Name+".pdf")
+else:
+    print("Invalid path Please check Path provided!")
