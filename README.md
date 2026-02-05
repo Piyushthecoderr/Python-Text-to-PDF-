@@ -25,3 +25,17 @@ The script accepts both absolute and relative file paths, reads the content of t
 5. The content is written into a PDF using ReportLab.
 6. The PDF is saved in the same directory as the text file.
 
+##Usage
+### 1. Install ReportLab
+pip install reportlab
+
+### 2. Run the script
+python txt_to_pdf.py
+
+### 3. Enter file path
+Enter path: C:\Pythons\example.txt
+
+### 3. Output
+PDF generated successfully at location: C:\Pythons\example.pdf
+
+
